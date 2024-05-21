@@ -1,0 +1,31 @@
+import queue
+import random
+
+class ATM:
+    def __init__(self):
+        self.queue = queue.Queue()
+
+    def add_customer(self, customer):
+        self.queue.put(customer)
+
+    def process_customers(self):
+        while not self.queue.empty():
+            customer = self.queue.get()
+            print("Processing customer:", customer)
+            # Lakukan proses transaksi ATM di sini
+            # Misalnya, print pesan bahwa transaksi selesai
+            print("Transaction complete for", customer)
+
+def main():
+    atm = ATM()
+    customers = ["Customer" + str(i) for i in range(1, 11)]  # 10 customers
+    random.shuffle(customers)  # Acak urutan pelanggan
+
+    for customer in customers:
+        atm.add_customer(customer)
+
+    atm.process_customers()
+
+if __name__ == "__main__":
+    main()
+ 
